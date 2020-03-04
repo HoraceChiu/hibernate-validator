@@ -32,8 +32,12 @@ public class MinValidatorForNumber implements ConstraintValidator<Min, Number> {
 	@Override
 	public boolean isValid(Number value, ConstraintValidatorContext constraintValidatorContext) {
 		// null values are valid
+		// why is the null value valid when it is incomparable to a long type minValue;
+		// it confuses me because I have to add an extra @Null annotaion above the @Min annotation to ensure
+		// the value violate the min value constraint
+ 
 		if ( value == null ) {
-			return true;
+			return false;
 		}
 
 		//handling of NaN, positive infinity and negative infinity
